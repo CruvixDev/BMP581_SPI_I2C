@@ -22,43 +22,43 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 typedef enum {
   /* Define sensor types */
-  TEMPERATURE,
-  HUMIDITY,
-  PRESSURE,
-  LIGHT,
-  UV_INTENSITY
-} SensorType;
+  ceApp_Sensor_TEMPERATURE,
+  ceApp_Sensor_HUMIDITY,
+  ceApp_Sensor_PRESSURE,
+  ceApp_Sensor_LIGHT,
+  ce_App_Sensor_UV_INTENSITY
+} eSensorType_t;
 
 typedef enum {
   /* Define sensor data unit */
-  DEGREE_CELSIUS,
-  PERCENT,
-  PASCAL,
-  LUX,
-  INDEX
-} SensorDataUnit;
+  ceApp_Sensor_DEGREE_CELSIUS,
+  ceApp_Sensor_PERCENT,
+  ceApp_Sensor_PASCAL,
+  ceApp_Sensor_LUX,
+  ceApp_Sensor_INDEX
+} eSensorDataUnit_t;
 
 typedef struct
 {
-  char sensorName[50];
-  SensorType sensorType;
-  SensorDataUnit sensorDataUnit;
-} Sensor;
+  char c_SensorName[50];
+  eSensorType_t s_SensorType;
+  eSensorDataUnit_t s_SensorDataUnit;
+} sSensor_t;
 
 typedef struct
 {
-  Sensor sensor; //I2CSensor extends Sensor
-  uint8_t i2cAddress;
-  uint8_t i2cRegisterAddress;
-  uint8_t* data;
-} I2CSensor;
+  sSensor_t s_Sensor; //I2CSensor extends Sensor
+  uint8_t u8_i2cAddress;
+  uint8_t* au8_i2cRegisterAdress; //Tx buffer
+  uint8_t* au8_i2cRegisterData; //Rx buffer
+} sI2CSensor_t;
 
 typedef struct
 {
-  Sensor sensor; //SPISensor extends Sensor
-  uint8_t spiFrequency;
+  sSensor_t s_Sensor; //SPISensor extends Sensor
+  uint8_t u8_spiFrequency;
   uint8_t spiCommand;
-} SPISensor;
+} sSPISensor_t;
 
 /* Exported constants --------------------------------------------------------*/
 

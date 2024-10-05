@@ -141,3 +141,29 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
 
   }
 }
+
+void vI2C_deInit(void) {
+
+}
+
+void vI2C_transmit(sI2CSensor_t* p_i2cSensorInfo) {
+  if (p_i2cSensorInfo != NULL) {
+    HAL_I2C_Master_Transmit_DMA(
+      &hi2c1, 
+      p_i2cSensorInfo->u8_i2cAddress,
+      p_i2cSensorInfo->au8_i2cRegisterAdress,
+      sizeof(p_i2cSensorInfo->au8_i2cRegisterAdress)
+    );
+  }
+}
+
+void vI2C_receive(sI2CSensor_t* p_i2cSensorInfo) {
+  if (p_i2cSensorInfo != NULL) {
+    HAL_I2C_Master_Receive_DMA(
+      &hi2c1,
+      p_i2cSensorInfo->u8_i2cAddress,
+      p_i2cSensorInfo->au8_i2cRegisterData,
+      sizeof(p_i2cSensorInfo->au8_i2cRegisterData)
+    );
+  }
+}

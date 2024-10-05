@@ -28,11 +28,9 @@ static float g_fPressure = 0.0f;
 static float g_fTemperature = 0.0f;
 static bool g_bIsBMP581Ready = false;
 
-static I2CSensor g_I2CSensor_BMP581 = {
-  {"BMP581", PRESSURE, PASCAL}, //Sensor object attributes
+static sI2CSensor_t g_I2CSensor_BMP581 = {
+  {"BMP581", ceApp_Sensor_PRESSURE, ceApp_Sensor_PASCAL}, //Sensor object attributes
   0x00, //BMP581 I2C address
-  0x00, //BMP581 I2C register address
-  {0} //BMP 581 I2C data
 };
 
 /* Private function prototypes -----------------------------------------------*/
