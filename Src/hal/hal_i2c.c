@@ -146,24 +146,24 @@ void vI2C_deInit(void) {
 
 }
 
-void vI2C_transmit(sI2CSensor_t* p_i2cSensorInfo) {
+void vI2C_transmit(sI2CSensor_t* p_i2cSensorInfo, uint8_t* p_u8Data) {
   if (p_i2cSensorInfo != NULL) {
     HAL_I2C_Master_Transmit_DMA(
       &hi2c1, 
       p_i2cSensorInfo->u8_i2cAddress,
-      p_i2cSensorInfo->au8_i2cRegisterAdress,
-      sizeof(p_i2cSensorInfo->au8_i2cRegisterAdress)
+      p_u8Data,
+      sizeof(p_u8Data)
     );
   }
 }
 
-void vI2C_receive(sI2CSensor_t* p_i2cSensorInfo) {
+void vI2C_receive(sI2CSensor_t* p_i2cSensorInfo, uint8_t* p_u8Data) {
   if (p_i2cSensorInfo != NULL) {
     HAL_I2C_Master_Receive_DMA(
       &hi2c1,
       p_i2cSensorInfo->u8_i2cAddress,
-      p_i2cSensorInfo->au8_i2cRegisterData,
-      sizeof(p_i2cSensorInfo->au8_i2cRegisterData)
+      p_u8Data,
+      sizeof(p_u8Data)
     );
   }
 }

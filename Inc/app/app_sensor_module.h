@@ -49,8 +49,7 @@ typedef struct
 {
   sSensor_t s_Sensor; //I2CSensor extends Sensor
   uint8_t u8_i2cAddress;
-  uint8_t* au8_i2cRegisterAdress; //Tx buffer
-  uint8_t* au8_i2cRegisterData; //Rx buffer
+  uint8_t u8_i2cRegisterAddress;
 } sI2CSensor_t;
 
 typedef struct
