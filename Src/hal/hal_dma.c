@@ -17,7 +17,7 @@
 /**
   * Enable DMA controller clock
   */
-void MX_DMA_Init(void)
+void vHAL_DMA_init(void)
 {
 
   /* DMA controller clock enable */

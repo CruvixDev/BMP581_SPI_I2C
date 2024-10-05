@@ -16,7 +16,7 @@
 
 /** Pinout Configuration
 */
-void MX_GPIO_Init(void)
+void vHAL_GPIO_init(void)
 {
 
   /* GPIO Ports Clock Enable */

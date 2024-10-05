@@ -53,8 +53,8 @@ int main(void)
   vHAL_Clock_init();
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_DMA_Init();
+  vHAL_GPIO_init();
+  vHAL_DMA_init();
   vI2C_init();
   vSPI_init();
 
@@ -76,6 +76,6 @@ void Error_Handler(void)
   __disable_irq();
 
   while (1) {
-    
+    //TODO: blink red LED here
   }
 }
