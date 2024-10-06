@@ -146,24 +146,50 @@ void vI2C_deInit(void) {
 
 }
 
-void vI2C_transmit(sI2CSensor_t* p_i2cSensorInfo, uint8_t* p_u8Data) {
-  if (p_i2cSensorInfo != NULL) {
+void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data) {
+  if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Master_Transmit_DMA(
       &hi2c1, 
-      p_i2cSensorInfo->u8_i2cAddress,
-      p_u8Data,
-      sizeof(p_u8Data)
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      p_pu8Data,
+      (uint16_t)sizeof(p_pu8Data)
     );
   }
 }
 
-void vI2C_receive(sI2CSensor_t* p_i2cSensorInfo, uint8_t* p_u8Data) {
-  if (p_i2cSensorInfo != NULL) {
+void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data) {
+  if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Master_Receive_DMA(
       &hi2c1,
-      p_i2cSensorInfo->u8_i2cAddress,
-      p_u8Data,
-      sizeof(p_u8Data)
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      p_pu8Data,
+      (uint16_t)sizeof(p_pu8Data)
+    );
+  }
+}
+
+void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_t* p_pu8Data) {
+  if (p_pi2cSensorInfo != NULL) {
+    HAL_I2C_Mem_Write_DMA(
+      &hi2c1,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      (uint16_t)p_u8WriteAddress,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
+      p_pu8Data,
+      (uint16_t)sizeof(p_pu8Data)
+    );
+  }
+}
+
+void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t* p_pu8Data) {
+  if (p_pi2cSensorInfo != NULL) {
+    HAL_I2C_Mem_Read_DMA(
+      &hi2c1,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      (uint16_t)p_u8ReadAddress,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
+      p_pu8Data,
+      (uint16_t)sizeof(p_pu8Data)
     );
   }
 }

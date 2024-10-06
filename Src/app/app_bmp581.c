@@ -26,6 +26,7 @@ typedef struct sBMP581Sensor_t
 };
 
 /* Private define ------------------------------------------------------------*/
+#define BMP581_REGISTER_SIZE (uint8_t)8
 
 /* Private macro -------------------------------------------------------------*/
 
@@ -42,7 +43,8 @@ static sBMP581Sensor_t s_BMP581Sensor = {
 static sI2CSensor_t g_I2CSensor_BMP581 = {
   {"BMP581", ceApp_Sensor_PRESSURE, ceApp_Sensor_PASCAL}, //Sensor object attributes
   0x00, //BMP581 I2C address
-  0x00 //BMP581 I2C register address
+  0x00, //BMP581 I2C register address
+  BMP581_REGISTER_SIZE
 };
 
 /* Private function prototypes -----------------------------------------------*/
