@@ -107,7 +107,7 @@ uint8_t u8APP_BMP581_getAddress(void) {
 uint8_t u8APP_BMP581_getChipID(void) {
   g_I2CSensor_BMP581.u8_i2cRegisterAddress = 0x01;
 
-  vI2C_read(&g_I2CSensor_BMP581, 0x01, &g_BMP581Sensor.u8_chipID);
+  vI2C_read(&g_I2CSensor_BMP581, 0x01, &g_BMP581Sensor.u8_chipID, 1);
 
   return 0u;
 }
