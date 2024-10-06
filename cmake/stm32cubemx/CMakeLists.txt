@@ -30,6 +30,7 @@ target_sources(stm32cubemx INTERFACE
     ../../Src/hal/hal_clock.c
     ../../Src/system/stm32h7xx_it.c
     ../../Src/system/stm32h7xx_hal_msp.c
+    ../../Src/app/app_bmp581.c
     ../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c
     ../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c
     ../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c

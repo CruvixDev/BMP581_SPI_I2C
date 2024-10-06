@@ -10,12 +10,14 @@
 /* General interfaces --------------------------------------------------------*/
 
 /* Used interfaces (dependencies includes ) ----------------------------------*/
+#include "app/app_bmp581.h"
 
 /* Associated interfaces -----------------------------------------------------*/
 #include "app/app_sensor_module.h"
+#include "hal/hal_i2c.h"
 
 /* Private typedef -----------------------------------------------------------*/
-typedef struct sBMP581Sensor_t
+typedef struct
 {
   uint8_t u8_chipID;
   uint8_t u8_chipRevision;
@@ -23,7 +25,7 @@ typedef struct sBMP581Sensor_t
   float f_pressure;
   float f_temperature;
   bool b_isBMP581Ready;
-};
+} sBMP581Sensor_t;
 
 /* Private define ------------------------------------------------------------*/
 #define BMP581_REGISTER_SIZE (uint8_t)8
@@ -31,7 +33,7 @@ typedef struct sBMP581Sensor_t
 /* Private macro -------------------------------------------------------------*/
 
 /* Private variables ---------------------------------------------------------*/
-static sBMP581Sensor_t s_BMP581Sensor = {
+static sBMP581Sensor_t g_BMP581Sensor = {
   0x00,
   0x00,
   0x00,
@@ -42,7 +44,7 @@ static sBMP581Sensor_t s_BMP581Sensor = {
 
 static sI2CSensor_t g_I2CSensor_BMP581 = {
   {"BMP581", ceApp_Sensor_PRESSURE, ceApp_Sensor_PASCAL}, //Sensor object attributes
-  0x00, //BMP581 I2C address
+  0x46, //BMP581 I2C address
   0x00, //BMP581 I2C register address
   BMP581_REGISTER_SIZE
 };
@@ -103,6 +105,10 @@ uint8_t u8APP_BMP581_getAddress(void) {
  * @return int The BMP581 chip's ID
  */
 uint8_t u8APP_BMP581_getChipID(void) {
+  g_I2CSensor_BMP581.u8_i2cRegisterAddress = 0x01;
+
+  vI2C_read(&g_I2CSensor_BMP581, 0x01, &g_BMP581Sensor.u8_chipID);
+
   return 0u;
 }
 

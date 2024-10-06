@@ -19,6 +19,7 @@
 #include "hal/hal_gpio.h"
 #include "hal/hal_clock.h"
 #include "hal/hal_mpu.h"
+#include "app/app_bmp581.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -60,7 +61,8 @@ int main(void)
 
   /* Main infinite loop */
   while (1) {
-
+    u8APP_BMP581_getChipID();
+    HAL_Delay(1000);
   }
 }
 

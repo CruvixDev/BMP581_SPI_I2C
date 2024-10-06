@@ -16,6 +16,7 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include <stdint.h>
 
 /* Private includes ----------------------------------------------------------*/
 
@@ -65,13 +66,6 @@ typedef struct
 /* Exported macro ------------------------------------------------------------*/
 
 /* Exported functions prototypes ---------------------------------------------*/
-void vAPP_BMP581_init(void);
-float fAPP_BMP581_getPressure(void);
-float fAPP_BMP581_getTemperature(void);
-uint8_t u8APP_BMP581_getAddress(void);
-uint8_t u8APP_BMP581_getChipID(void);
-uint8_t u8APP_BMP581_getChipRevision(void);
-void vAPP_BMP581_startMeasurements(void);
 
 /* Private defines -----------------------------------------------------------*/
 
