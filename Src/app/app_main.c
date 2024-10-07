@@ -61,6 +61,7 @@ int main(void)
 
   /* Main infinite loop */
   while (1) {
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
     u8APP_BMP581_getChipID();
     HAL_Delay(1000);
   }
@@ -78,6 +79,7 @@ void Error_Handler(void)
   __disable_irq();
 
   while (1) {
-    //TODO: blink red LED here
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+    HAL_Delay(1000);
   }
 }
