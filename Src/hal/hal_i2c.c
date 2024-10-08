@@ -152,7 +152,7 @@ void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t 
       &hi2c1, 
       (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
       p_pu8Data,
-      p_u16Size
+      p_u16Size //In bytes
     );
   }
 }
@@ -163,7 +163,7 @@ void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p
       &hi2c1,
       (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
       p_pu8Data,
-      p_u16Size
+      p_u16Size //In bytes
     );
   }
 }
@@ -176,7 +176,7 @@ void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_
       (uint16_t)p_u8WriteAddress,
       (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
       p_pu8Data,
-      p_u16Size
+      p_u16Size //In bytes
     );
   }
 }
@@ -185,13 +185,21 @@ void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t*
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Mem_Read_DMA(
       &hi2c1,
-      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress << 1,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress << 1, //Left shift of one byte for the HAL needed
       (uint16_t)p_u8ReadAddress,
       (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
       p_pu8Data,
-      p_u16Size
+      p_u16Size //In bytes
     );
   }
+}
+
+void I2C1_EV_IRQHandler(void) {
+    HAL_I2C_EV_IRQHandler(&hi2c1);
+}
+
+void I2C1_ER_IRQHandler(void) {
+    HAL_I2C_ER_IRQHandler(&hi2c1);
 }
 
 void DMA1_Stream0_IRQHandler(void) {
