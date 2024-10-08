@@ -185,7 +185,7 @@ void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t*
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Mem_Read_DMA(
       &hi2c1,
-      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress << 1,
       (uint16_t)p_u8ReadAddress,
       (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
       p_pu8Data,
