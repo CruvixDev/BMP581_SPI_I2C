@@ -28,7 +28,7 @@ typedef struct
 } sBMP581Sensor_t;
 
 /* Private define ------------------------------------------------------------*/
-#define BMP581_REGISTER_SIZE (uint8_t)8
+#define BMP581_REGISTER_SIZE (uint8_t)1
 
 /* Private macro -------------------------------------------------------------*/
 
