@@ -25,10 +25,9 @@ typedef struct
   float f_pressure;
   float f_temperature;
   bool b_isBMP581Ready;
-} sBMP581Sensor_t;
+} sBMP581Sensor_t; //Attributes of BMP581 sensor object
 
 /* Private define ------------------------------------------------------------*/
-#define BMP581_REGISTER_SIZE (uint8_t)1
 
 /* Private macro -------------------------------------------------------------*/
 
@@ -44,8 +43,8 @@ static sBMP581Sensor_t g_BMP581Sensor = {
 
 static sI2CSensor_t g_I2CSensor_BMP581 = {
   {"BMP581", ceApp_Sensor_PRESSURE, ceApp_Sensor_PASCAL}, //Sensor object attributes
-  0x46, //BMP581 I2C address
-  0x00, //BMP581 I2C register address
+  BMP5_I2C_ADDR_PRIM, //BMP581 I2C address
+  cAPP_BMP581_REG_NONE, //BMP581 I2C register address
   BMP581_REGISTER_SIZE
 };
 
@@ -107,7 +106,7 @@ uint8_t u8APP_BMP581_getAddress(void) {
 uint8_t u8APP_BMP581_getChipID(void) {
   g_I2CSensor_BMP581.u8_i2cRegisterAddress = 0x01;
 
-  vI2C_read(&g_I2CSensor_BMP581, 0x01, &g_BMP581Sensor.u8_chipID, 1);
+  vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_CHIP_ID, &g_BMP581Sensor.u8_chipID, 1);
 
   return 0u;
 }
