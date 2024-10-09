@@ -27,7 +27,7 @@ typedef enum {
   ceApp_Sensor_HUMIDITY,
   ceApp_Sensor_PRESSURE,
   ceApp_Sensor_LIGHT,
-  ce_App_Sensor_UV_INTENSITY
+  ceApp_Sensor_UV_INTENSITY
 } eSensorType_t;
 
 typedef enum {
