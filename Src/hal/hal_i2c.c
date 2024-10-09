@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file           : i2c.c
-  * @brief          : This file provides code for the configuration
+  * @brief          : This file provides code for I2C configuration
   * of the I2C instances.
   * @author         : Julien Cruvieux
   * @date           : 2024/09/22
@@ -11,6 +11,7 @@
 /* General interfaces --------------------------------------------------------*/
 
 /* Used interfaces (dependencies includes ) ----------------------------------*/
+#include "stm32h7xx_hal.h"
 
 /* Associated interfaces -----------------------------------------------------*/
 #include "hal/hal_i2c.h"

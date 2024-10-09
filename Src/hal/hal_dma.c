@@ -1,22 +1,31 @@
 /**
   ******************************************************************************
-  * @file    dma.c
-  * @brief   This file provides code for the configuration
-  *          of all the requested memory to memory DMA transfers.
-  * @author  STMicroelectronics
+  * @file           : hal_dma.c
+  * @brief          : This file provides code for DMA configuration
+  * @author         : Julien Cruvieux
+  * @date           : 2024/10/09
   ******************************************************************************
   */
 
-/* Includes ------------------------------------------------------------------*/
+/* General interfaces --------------------------------------------------------*/
+
+/* Used interfaces (dependencies includes) -----------------------------------*/
+#include "stm32h7xx_hal.h"
+
+/* Associated interfaces -----------------------------------------------------*/
 #include "hal/hal_dma.h"
 
-/*----------------------------------------------------------------------------*/
-/* Configure DMA                                                              */
-/*----------------------------------------------------------------------------*/
+/* Private typedef -----------------------------------------------------------*/
 
-/**
-  * Enable DMA controller clock
-  */
+/* Private define ------------------------------------------------------------*/
+
+/* Private macro -------------------------------------------------------------*/
+
+/* Private variables ---------------------------------------------------------*/
+
+/* Private function prototypes -----------------------------------------------*/
+
+/* Public functions ----------------------------------------------------------*/
 void vHAL_DMA_init(void)
 {
 
@@ -38,3 +47,5 @@ void vHAL_DMA_init(void)
   HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
 
 }
+
+/* Private functions ---------------------------------------------------------*/

@@ -10,6 +10,7 @@
 /* General interfaces --------------------------------------------------------*/
 
 /* Used interfaces (dependencies includes) -----------------------------------*/
+#include "stm32h7xx_hal.h"
 
 /* Associated interfaces -----------------------------------------------------*/
 #include "hal/hal_mpu.h"

@@ -9,17 +9,16 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __SPI_H__
-#define __SPI_H__
+#ifndef _HAL_SPI_
+#define _HAL_SPI_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32h7xx_hal.h"
 
-/* Private includes ----------------------------------------------------------*/
+/* Public includes -----------------------------------------------------------*/
 
 /* Exported types ------------------------------------------------------------*/
 
@@ -36,4 +35,4 @@ void vSPI_init(void);
 }
 #endif
 
-#endif /* __SPI_H__ */
+#endif /* _HAL_SPI_ */

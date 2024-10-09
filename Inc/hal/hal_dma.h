@@ -1,52 +1,38 @@
-/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    dma.h
-  * @brief   This file contains all the function prototypes for
-  *          the dma.c file
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
+  * @file           : hal_clock.h
+  * @brief          : Header file for STM32 clock configuration and 
+  * initialisation
+  * @author         : Julien Cruvieux
+  * @date           : 2024/09/30
   ******************************************************************************
   */
-/* USER CODE END Header */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __DMA_H__
-#define __DMA_H__
+#ifndef _HAL_DMA_
+#define _HAL_DMA_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32h7xx_hal.h"
 
-/* DMA memory to memory transfer handles -------------------------------------*/
+/* Public includes -----------------------------------------------------------*/
 
-/* USER CODE BEGIN Includes */
+/* Exported types ------------------------------------------------------------*/
 
-/* USER CODE END Includes */
+/* Exported constants --------------------------------------------------------*/
 
-/* USER CODE BEGIN Private defines */
+/* Exported macro ------------------------------------------------------------*/
 
-/* USER CODE END Private defines */
-
+/* Exported functions prototypes ---------------------------------------------*/
 void vHAL_DMA_init(void);
 
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
+/* Private defines -----------------------------------------------------------*/
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __DMA_H__ */
-
+#endif /* _HAL_DMA_ */

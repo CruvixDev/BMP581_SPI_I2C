@@ -1,21 +1,31 @@
 /**
   ******************************************************************************
-  * @file    gpio.c
-  * @brief   This file provides code for the configuration
-  *          of all used GPIO pins.
-  * @author STMicroelectronics
+  * @file           : hal_gpio.c
+  * @brief          : This file provides code for GPIO configuration
+  * @author         : <author name>
+  * @date           : <yyyy/MM/dd>
   ******************************************************************************
   */
 
-/* Includes ------------------------------------------------------------------*/
+/* General interfaces --------------------------------------------------------*/
+
+/* Used interfaces (dependencies includes) -----------------------------------*/
+#include "stm32h7xx_hal.h"
+
+/* Associated interfaces -----------------------------------------------------*/
 #include "hal/hal_gpio.h"
 
-/*----------------------------------------------------------------------------*/
-/* Configure GPIO                                                             */
-/*----------------------------------------------------------------------------*/
+/* Private typedef -----------------------------------------------------------*/
 
-/** Pinout Configuration
-*/
+/* Private define ------------------------------------------------------------*/
+
+/* Private macro -------------------------------------------------------------*/
+
+/* Private variables ---------------------------------------------------------*/
+
+/* Private function prototypes -----------------------------------------------*/
+
+/* Public functions ----------------------------------------------------------*/
 void vHAL_GPIO_init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -35,3 +45,5 @@ void vHAL_GPIO_init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
+
+/* Private functions ---------------------------------------------------------*/

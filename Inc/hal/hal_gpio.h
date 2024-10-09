@@ -1,49 +1,38 @@
-/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    gpio.h
-  * @brief   This file contains all the function prototypes for
-  *          the gpio.c file
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
+  * @file           : hal_clock.h
+  * @brief          : Header file for STM32 clock configuration and 
+  * initialisation
+  * @author         : Julien Cruvieux
+  * @date           : 2024/09/30
   ******************************************************************************
   */
-/* USER CODE END Header */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GPIO_H__
-#define __GPIO_H__
+#ifndef _HAL_GPIO_
+#define _HAL_GPIO_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32h7xx_hal.h"
 
-/* USER CODE BEGIN Includes */
+/* Public includes -----------------------------------------------------------*/
 
-/* USER CODE END Includes */
+/* Exported types ------------------------------------------------------------*/
 
-/* USER CODE BEGIN Private defines */
+/* Exported constants --------------------------------------------------------*/
 
-/* USER CODE END Private defines */
+/* Exported macro ------------------------------------------------------------*/
 
+/* Exported functions prototypes ---------------------------------------------*/
 void vHAL_GPIO_init(void);
 
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
+/* Private defines -----------------------------------------------------------*/
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ GPIO_H__ */
 
+#endif /* _HAL_GPIO_ */
