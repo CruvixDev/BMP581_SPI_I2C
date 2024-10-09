@@ -27,6 +27,8 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+// TODO : to remove in the future, the LED functions must be in GPIO module 
+//and not in the app main module
 #include "stm32h7xx_hal.h"
 
 /* Private includes ----------------------------------------------------------*/
