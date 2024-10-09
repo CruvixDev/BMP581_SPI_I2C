@@ -196,11 +196,11 @@ void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t*
 }
 
 void I2C1_EV_IRQHandler(void) {
-    HAL_I2C_EV_IRQHandler(&hi2c1);
+  HAL_I2C_EV_IRQHandler(&hi2c1);
 }
 
 void I2C1_ER_IRQHandler(void) {
-    HAL_I2C_ER_IRQHandler(&hi2c1);
+  HAL_I2C_ER_IRQHandler(&hi2c1);
 }
 
 void DMA1_Stream0_IRQHandler(void) {
