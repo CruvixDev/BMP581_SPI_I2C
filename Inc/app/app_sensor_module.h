@@ -50,8 +50,7 @@ typedef struct
 {
   sSensor_t s_Sensor; //I2CSensor extends Sensor
   uint8_t u8_i2cAddress;
-  uint8_t u8_i2cRegisterAddress; //If applicable
-  uint8_t u8_i2cRegisterSize; //If applicable
+  uint8_t u8_i2cRegisterSize;
 } sI2CSensor_t;
 
 typedef struct

@@ -44,7 +44,6 @@ static sBMP581Sensor_t g_BMP581Sensor = {
 static sI2CSensor_t g_I2CSensor_BMP581 = {
   {"BMP581", ceApp_Sensor_PRESSURE, ceApp_Sensor_PASCAL}, //Sensor object attributes
   BMP5_I2C_ADDR_PRIM, //BMP581 I2C address
-  cAPP_BMP581_REG_NONE, //BMP581 I2C register address
   BMP581_REGISTER_SIZE
 };
 
@@ -104,10 +103,7 @@ uint8_t u8APP_BMP581_getAddress(void) {
  * @return int The BMP581 chip's ID
  */
 uint8_t u8APP_BMP581_getChipID(void) {
-  g_I2CSensor_BMP581.u8_i2cRegisterAddress = 0x01;
-
   vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_CHIP_ID, &g_BMP581Sensor.u8_chipID, 1);
-
   return 0u;
 }
 
