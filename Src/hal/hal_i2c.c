@@ -30,6 +30,14 @@ static DMA_HandleTypeDef hdma_i2c1_rx;
 /* Private function prototypes -----------------------------------------------*/
 
 /* Public functions ----------------------------------------------------------*/
+
+/**
+ * @brief Init function for I2C peripheral
+ * 
+ * Initialise I2C Peripheral and filters
+ * 
+ * @return
+ */
 void vI2C_init(void)
 {
   hi2c1.Instance = I2C1;
@@ -48,7 +56,14 @@ void vI2C_init(void)
 
 }
 
-/* Private functions ---------------------------------------------------------*/
+/**
+ * @brief Init function for DMA and GPIO 
+ * 
+ * Initialises the DMA channels and GPIO of I2C peripheral
+ * 
+ * @param i2cHandle the structure containing all configurations of I2C peripheral
+ * @return
+ */
 void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -113,10 +128,17 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
     HAL_NVIC_SetPriority(I2C1_ER_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(I2C1_ER_IRQn);
-
   }
 }
 
+/**
+ * @brief Deinit function for DMA and GPIO 
+ * 
+ * De-initialises the DMA channels and GPIO of I2C peripheral
+ * 
+ * @param i2cHandle the structure containing all configurations of I2C peripheral
+ * @return
+ */
 void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
 {
   if(i2cHandle->Instance==I2C1)
@@ -143,10 +165,27 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
   }
 }
 
+/**
+ * @brief Deinit function for I2C 
+ * 
+ * De-initialises the I2C peripheral
+ * 
+ * @return
+ */
 void vI2C_deInit(void) {
 
 }
 
+/**
+ * @brief Transmit function on I2C bus
+ * 
+ * Transmit data over I2C bus in DMA mode
+ * 
+ * @param p_pi2cSensorInfo the I2C sensor object to transmit
+ * @param p_pu8Data the data array to transmit
+ * @param p_u16Size the size of the data array to transmit
+ * @return
+ */
 void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Master_Transmit_DMA(
@@ -158,6 +197,16 @@ void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t 
   }
 }
 
+/**
+ * @brief Receive function on I2C bus
+ * 
+ * Receive data over I2C bus in DMA mode
+ * 
+ * @param p_pi2cSensorInfo the I2C sensor object to receive
+ * @param p_pu8Data the data array to receive
+ * @param p_u16Size the size of the data array to receive
+ * @return
+ */
 void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Master_Receive_DMA(
@@ -169,6 +218,17 @@ void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p
   }
 }
 
+/**
+ * @brief Write data to I2C device
+ * 
+ * Write data into I2C device internal's register
+ * 
+ * @param p_pi2cSensorInfo the I2C sensor object to write
+ * @param p_u8WriteAddress the I2C register address to write data
+ * @param p_pu8Data the data array to write into I2C device's register
+ * @param p_u16Size the size of the data array to write
+ * @return
+ */
 void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Mem_Write_DMA(
@@ -182,6 +242,17 @@ void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_
   }
 }
 
+/**
+ * @brief Read data from I2C device
+ * 
+ * Read data into I2C device internal's register
+ * 
+ * @param p_pi2cSensorInfo the I2C sensor object to read
+ * @param p_u8WriteAddress the I2C register address to read data
+ * @param p_pu8Data the data array to read into I2C device's register
+ * @param p_u16Size the size of the data array to read
+ * @return
+ */
 void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Mem_Read_DMA(
@@ -210,3 +281,5 @@ void DMA1_Stream0_IRQHandler(void) {
 void DMA1_Stream1_IRQHandler(void) {
   HAL_DMA_IRQHandler(&hdma_i2c1_rx);
 }
+
+/* Private functions ---------------------------------------------------------*/

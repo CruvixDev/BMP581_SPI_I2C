@@ -41,7 +41,7 @@ typedef enum {
 
 typedef struct
 {
-  char c_SensorName[50];
+  char ac_SensorName[50];
   eSensorType_t s_SensorType;
   eSensorDataUnit_t s_SensorDataUnit;
 } sSensor_t;
@@ -57,7 +57,7 @@ typedef struct
 {
   sSensor_t s_Sensor; //SPISensor extends Sensor
   uint8_t u8_spiFrequency;
-  uint8_t spiCommand;
+  uint8_t u8_spiCommand;
 } sSPISensor_t;
 
 /* Exported constants --------------------------------------------------------*/
