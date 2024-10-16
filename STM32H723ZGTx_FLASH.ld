@@ -49,6 +49,14 @@
 *****************************************************************************
 */
 
+/*
+
+In this file, the DTCMRAM has been changed to RAM for data, bss and heap section
+because DMA can't access DTCMRAM domain, see :
+https://community.st.com/t5/stm32-mcus/dma-is-not-working-on-stm32h7-devices/ta-p/49498
+
+*/
+
 /* Entry Point */
 ENTRY(Reset_Handler)
 
@@ -147,7 +155,7 @@ SECTIONS
 
     . = ALIGN(4);
     _edata = .;        /* define a global symbol at data end */
-  } >RAM AT> FLASH
+  } >RAM AT> FLASH /* Change DTCMRAM to RAM because DMA can't access DTCMRAM */
 
   
   /* Uninitialized data section */
@@ -164,7 +172,7 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
-  } >RAM
+  } >RAM /* Change DTCMRAM to RAM because DMA can't access DTCMRAM */
 
   /* User_heap_stack section, used to check that there is enough RAM left */
   ._user_heap_stack :
@@ -176,7 +184,7 @@ SECTIONS
     . = . + _Min_Stack_Size;
     _estack = .;
     . = ALIGN(8);
-  } >RAM
+  } >RAM /* Change DTCMRAM to RAM because DMA can't access DTCMRAM */
 
   
 
