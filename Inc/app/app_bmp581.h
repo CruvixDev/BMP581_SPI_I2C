@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @file           : hal_clock.h
-  * @brief          : Header file for STM32 clock configuration and 
+  * @file           : app_bmp581.h
+  * @brief          : Header file for BMP581 app layer
   * initialisation
   * @author         : Julien Cruvieux
   * @date           : 2024/09/30
