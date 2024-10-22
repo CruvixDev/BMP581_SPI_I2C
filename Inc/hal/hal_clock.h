@@ -28,6 +28,7 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void vHAL_Clock_init(void);
+void vHAL_Clock_delay(uint32_t pu32Delay);
 
 /* Private defines -----------------------------------------------------------*/
 

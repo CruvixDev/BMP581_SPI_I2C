@@ -82,4 +82,8 @@ void vHAL_Clock_init(void) {
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1);
 }
 
+void vHAL_Clock_delay(uint32_t pu32Delay) {
+  HAL_Delay(pu32Delay);
+}
+
 /* Private functions ---------------------------------------------------------*/

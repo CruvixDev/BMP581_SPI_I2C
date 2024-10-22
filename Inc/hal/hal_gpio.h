@@ -28,6 +28,8 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void vHAL_GPIO_init(void);
+void vHAL_GPIO_toggleGreenLED(void);
+void vHAL_GPIO_toggleRedLED(void);
 
 /* Private defines -----------------------------------------------------------*/
 

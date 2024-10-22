@@ -46,4 +46,12 @@ void vHAL_GPIO_init(void)
 
 }
 
+void vHAL_GPIO_toggleGreenLED(void) {
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+}
+
+void vHAL_GPIO_toggleRedLED(void) {
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+}
+
 /* Private functions ---------------------------------------------------------*/

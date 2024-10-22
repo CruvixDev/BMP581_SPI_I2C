@@ -63,8 +63,8 @@ int main(void)
 
   /* Main infinite loop */
   while (1) {
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-    HAL_Delay(1000);
+    vHAL_GPIO_toggleGreenLED();
+    vHAL_Clock_delay(1000);
   }
 }
 
@@ -80,7 +80,7 @@ void Error_Handler(void)
   __disable_irq();
 
   while (1) {
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-    HAL_Delay(1000);
+    vHAL_GPIO_toggleRedLED();
+    vHAL_Clock_delay(1000);  
   }
 }
