@@ -30,9 +30,11 @@ extern "C" {
 /* Exported functions prototypes ---------------------------------------------*/
 void vI2C_init(void);
 void vI2C_deInit(void);
-void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size);
-void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size);
+void vI2C_transmit_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size);
+void vI2C_receive_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size);
+void vI2C_write_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_t* p_pu8Data, uint16_t p_u16Size);
 void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_t* p_pu8Data, uint16_t p_u16Size);
+void vI2C_read_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t* p_pu8Data, uint16_t p_u16Size);
 void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t* p_pu8Data, uint16_t p_u16Size);
 
 /* Private defines -----------------------------------------------------------*/

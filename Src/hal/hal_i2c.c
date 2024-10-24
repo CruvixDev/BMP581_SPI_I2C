@@ -186,7 +186,7 @@ void vI2C_deInit(void) {
  * @param p_u16Size the size of the data array to transmit
  * @return
  */
-void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size) {
+void vI2C_transmit_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Master_Transmit_DMA(
       &hi2c1, 
@@ -207,11 +207,35 @@ void vI2C_transmit(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t 
  * @param p_u16Size the size of the data array to receive
  * @return
  */
-void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size) {
+void vI2C_receive_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
     HAL_I2C_Master_Receive_DMA(
       &hi2c1,
       (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      p_pu8Data,
+      p_u16Size //In bytes
+    );
+  }
+}
+
+/**
+ * @brief Write data to I2C device in DMA mode
+ * 
+ * Write data into I2C device internal's register
+ * 
+ * @param p_pi2cSensorInfo the I2C sensor object to write
+ * @param p_u8WriteAddress the I2C register address to write data
+ * @param p_pu8Data the data array to write into I2C device's register
+ * @param p_u16Size the size of the data array to write
+ * @return
+ */
+void vI2C_write_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_t* p_pu8Data, uint16_t p_u16Size) {
+  if (p_pi2cSensorInfo != NULL) {
+    HAL_I2C_Mem_Write_DMA(
+      &hi2c1,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
+      (uint16_t)p_u8WriteAddress,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
       p_pu8Data,
       p_u16Size //In bytes
     );
@@ -231,10 +255,35 @@ void vI2C_receive(sI2CSensor_t* p_pi2cSensorInfo, uint8_t* p_pu8Data, uint16_t p
  */
 void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
-    HAL_I2C_Mem_Write_DMA(
+    HAL_I2C_Mem_Write(
       &hi2c1,
       (uint16_t)p_pi2cSensorInfo->u8_i2cAddress,
       (uint16_t)p_u8WriteAddress,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
+      p_pu8Data,
+      p_u16Size, //In bytes
+      1000
+    );
+  }
+}
+
+/**
+ * @brief Read data from I2C device in DMA mode
+ * 
+ * Read data into I2C device internal's register
+ * 
+ * @param p_pi2cSensorInfo the I2C sensor object to read
+ * @param p_u8WriteAddress the I2C register address to read data
+ * @param p_pu8Data the data array to read into I2C device's register
+ * @param p_u16Size the size of the data array to read
+ * @return
+ */
+void vI2C_read_DMA(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t* p_pu8Data, uint16_t p_u16Size) {
+  if (p_pi2cSensorInfo != NULL) {
+    HAL_I2C_Mem_Read_DMA(
+      &hi2c1,
+      (uint16_t)p_pi2cSensorInfo->u8_i2cAddress << 1, //Left shift of one byte for the HAL needed
+      (uint16_t)p_u8ReadAddress,
       (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
       p_pu8Data,
       p_u16Size //In bytes
@@ -255,13 +304,14 @@ void vI2C_write(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8WriteAddress, uint8_
  */
 void vI2C_read(sI2CSensor_t* p_pi2cSensorInfo, uint8_t p_u8ReadAddress, uint8_t* p_pu8Data, uint16_t p_u16Size) {
   if (p_pi2cSensorInfo != NULL) {
-    HAL_I2C_Mem_Read_DMA(
+    HAL_I2C_Mem_Read(
       &hi2c1,
       (uint16_t)p_pi2cSensorInfo->u8_i2cAddress << 1, //Left shift of one byte for the HAL needed
       (uint16_t)p_u8ReadAddress,
       (uint16_t)p_pi2cSensorInfo->u8_i2cRegisterSize,
       p_pu8Data,
-      p_u16Size //In bytes
+      p_u16Size, //In bytes
+      1000
     );
   }
 }
