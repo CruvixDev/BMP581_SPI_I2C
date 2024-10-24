@@ -37,6 +37,7 @@ static sBMP581Sensor_t g_BMP581Sensor = {
   0x00,
   0x00,
   0x00,
+  0x00,
   0.0f,
   0.0f,
   false
