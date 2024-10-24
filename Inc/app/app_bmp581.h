@@ -25,8 +25,10 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 
 /* Exported constants --------------------------------------------------------*/
-#define BMP5_I2C_ADDR_PRIM (uint8_t)0x46
-#define BMP5_I2C_ADDR_SEC  (uint8_t)0x47
+#define BMP581_I2C_ADDR_PRIM (uint8_t)0x46
+#define BMP581_I2C_ADDR_SEC  (uint8_t)0x47
+#define BMP581_I2C_CHIP_ID   (uint8_t)0x50
+#define BMP581_I2C_REV_ID    (uint8_t)0x32
 
 #define cAPP_BMP581_REG_CHIP_ID         (uint8_t)0x01
 #define cAPP_BMP581_REG_REV_ID          (uint8_t)0x02

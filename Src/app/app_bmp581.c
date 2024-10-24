@@ -22,6 +22,7 @@ typedef struct
   uint8_t u8_chipID;
   uint8_t u8_chipRevision;
   uint8_t u8_chipStatus;
+  uint8_t u8_intStatus;
   float f_pressure;
   float f_temperature;
   bool b_isBMP581Ready;
@@ -59,7 +60,13 @@ static sI2CSensor_t g_I2CSensor_BMP581 = {
  * @return
  */
 void vAPP_BMP581_init(void) {
+  // Read chip ID, Rev and status synchronously
+  vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_CHIP_ID, &g_BMP581Sensor.u8_chipID, 1);
+  vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_REV_ID, &g_BMP581Sensor.u8_chipID, 1);
+  vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_CHIP_STATUS, &g_BMP581Sensor.u8_chipStatus, 1);
+  vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_INT_STATUS, &g_BMP581Sensor.u8_intStatus, 1);
 
+  //Verify the retrieved data if no error
 }
 
 /**
@@ -103,7 +110,7 @@ uint8_t u8APP_BMP581_getAddress(void) {
  * @return int The BMP581 chip's ID
  */
 uint8_t u8APP_BMP581_getChipID(void) {
-  vI2C_read(&g_I2CSensor_BMP581, cAPP_BMP581_REG_CHIP_ID, &g_BMP581Sensor.u8_chipID, 1);
+  vI2C_read_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_CHIP_ID, &g_BMP581Sensor.u8_chipID, 1);
   return 0u;
 }
 
