@@ -44,7 +44,7 @@ static sBMP581Sensor_t g_BMP581Sensor = {
 
 static sI2CSensor_t g_I2CSensor_BMP581 = {
   {"BMP581", ceApp_Sensor_PRESSURE, ceApp_Sensor_PASCAL}, //Sensor object attributes
-  BMP5_I2C_ADDR_PRIM, //BMP581 I2C address
+  BMP581_I2C_ADDR_PRIM, //BMP581 I2C address
   BMP581_REGISTER_SIZE
 };
 
