@@ -23,7 +23,7 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 typedef enum {
   /* Define sensor types */
-  ceApp_Sensor_TEMPERATURE,
+  ceApp_Sensor_TEMPERATURE = 0,
   ceApp_Sensor_HUMIDITY,
   ceApp_Sensor_PRESSURE,
   ceApp_Sensor_LIGHT,
@@ -32,7 +32,7 @@ typedef enum {
 
 typedef enum {
   /* Define sensor data unit */
-  ceApp_Sensor_DEGREE_CELSIUS,
+  ceApp_Sensor_DEGREE_CELSIUS = 0,
   ceApp_Sensor_PERCENT,
   ceApp_Sensor_PASCAL,
   ceApp_Sensor_LUX,
