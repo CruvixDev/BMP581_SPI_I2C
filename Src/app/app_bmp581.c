@@ -83,14 +83,23 @@ void vAPP_BMP581_init(void) {
     g_BMP581Sensor.u8_chipStatus & BMP581_I2C_STATUS_READY
   ) {
     if (g_BMP581Sensor.e_bmp581State == ceAPP_BMP581_STANDBY) {
-      //Enable pressure measurements
-      //Configure ODR to xxxHz (TBD)
-      //Configure OSR (TBD)
-      //Enable FIFO for Pressure and Temperature
-      //Confifure FIFO to be stop on full
-      //Enable IIR filter (TBD)
-      //Configure interrupts (INT_CONFIG)
-      //Activate FIFO full interrupt (INT_SOURCE register)
+      /* Enable pressure measurements */
+      vI2C_write_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_OSR_CONFIG, 0x40, 1);
+      /* Configure ODR to 240Hz */
+      vI2C_write_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_ODR_CONFIG, 0x00, 1);
+      /* Configure OSR (TBD) */
+      //TODO
+      /* Enable FIFO for Pressure and Temperature */
+      vI2C_write_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_FIFO_SEL, 0x03, 1);
+      /* Confifure FIFO to be stop on full */
+      vI2C_write_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_FIFO_CONFIG, 0x20, 1);
+      /* Enable IIR filter (TBD) */
+      //TODO
+      /* Configure interrupts (INT_CONFIG) */
+      vI2C_write_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_INT_CONFIG, 0x0E, 1);
+      /* Activate FIFO full interrupt (INT_SOURCE register) */
+      vI2C_write_DMA(&g_I2CSensor_BMP581, cAPP_BMP581_REG_INT_SOURCE, 0x02, 1);
+
     }
     else {
       //TODO return error code : can't init
