@@ -182,22 +182,38 @@ typedef enum {
   ceAPP_BMP581_SPI_AUTOCONFIG,
 } eBMP581HIFMode_t;
 
+/**
+ * @brief Struct to easily configure and read bits in ODR_CONFIG register
+ * ODR_CONFIG : read-write register
+ * 
+ */
 typedef struct {
-  /* Configuration of ODR_CONFIG register */
   eBMP581PwrMode_t e_pwr_mode;
   eBMP581ODR_t e_odr;
   bool b_deep_stdy;
 } sODRConfig_t;
 
+/**
+ * @brief Struct to easily configure and read bits in OSR_CONFIG register
+ * OSR_CONFIG : read-write register 
+ * 
+ */
 typedef struct {
-  /* Configuration of OSR_CONFIG register */
   eBMP581OSR_t e_osr_t;
   eBMP581OSR_t e_osr_p;
   bool b_press_en;
 } sOSRConfig_t;
 
+/**
+ * @brief Struct to easily configure and read bits in OOR_CONFIG, OOR_RANGE,
+ * OOR_THR_P_MSB and OOR_THR_P_LSB registers
+ * OOR_CONFIG : read-write register
+ * OOR_RANGE : read-wrtie register
+ * OOR_THR_P_MSB : read-write register
+ * OOR_THR_P_LSB : read-write register
+ * 
+ */
 typedef struct {
-  /* Configuration of OOR_CONFIG, OOR_RANGE, OOR_THR_P_MSB and OOR_THR_P_LSB register*/
   bool b_oor_thr_p_16;
   eBMP581OORCntLim_t e_cnt_lim;
   uint8_t u8_oor_range_p;
@@ -205,8 +221,14 @@ typedef struct {
   uint8_t u8_oor_thr_p_7_0;
 } sOORConfig_t;
 
+/**
+ * @brief Struct to easily configure and read bits in DSP_CONFIG and
+ * DSP_IIR registers
+ * DSP_CONFIG : read-write register
+ * DSP_IIR : read-write register
+ * 
+ */
 typedef struct {
-  /* Configuration of the DSP_IIR and DSP_CONFIG registers */
   eBMP581IRRFilter_t e_set_iir_t;
   eBMP581IRRFilter_t e_set_iir_p;
   eBMP581PTComp_t e_comp_pt_en;
@@ -218,16 +240,28 @@ typedef struct {
   bool b_oor_sel_iir_p;
 } sDSPConfig_t;
 
+/**
+ * @brief Struct to easily configure and read bits in FIFO_SEL and
+ * FIFO_CONFIG registers
+ * FIFO_SEL : read-write register
+ * FIFO_CONFIG : read-write register
+ * 
+ */
 typedef struct {
-  /* Configuration of the FIFO_SEL and FIFO_CONFIG registers */
   eBMP581FIFOSel_t e_fifo_frame_sel;
   eBMP581FIFODec_t e_fifo_dec_sel;
   uint8_t u8_fifo_threshold;
   bool b_fifo_mode;
 } sFIFOConfig_t;
 
+/**
+ * @brief Struct to easily configure and read bits in INT_SOURCE and
+ * INT_CONFIG registers
+ * INT_SOURCE : read-write register
+ * INT_CONFIG : read-write register
+ * 
+ */
 typedef struct {
-  /* Configuration of INT_SOURCE and INT_CONFIG registers */
   bool b_drdy_data_reg_en;
   bool b_fifo_full_en;
   bool b_fifo_ths_en;
@@ -239,22 +273,34 @@ typedef struct {
   uint8_t u8_pad_int_drv;
 } sIntConfig_t;
 
+/**
+ * @brief Struct to easily configure and read bits in DRIVE register
+ * DRIVE : read-write register
+ * 
+ */
 typedef struct {
-  /* Configuration of the DRIVE register */
   bool b_i2c_csb_pull_en;
   bool b_spi3_en;
   uint8_t u8_pad_if_drv;
 } sDriveConfig_t;
 
+/**
+ * @brief Struct to easily read bits in OSR_EFF register
+ * OSR_EFF : read only register
+ * 
+ */
 typedef struct {
-  /* Effective OSR */
   eBMP581OSR_t e_osr_t_eff;
   eBMP581OSR_t e_osr_p_eff;
   bool b_odr_is_valid;
 } sOSREff_t;
 
+/**
+ * @brief Struct to easily read bits in STATUS register
+ * STATUS : read only register
+ * 
+ */
 typedef struct {
-  /* BMP581 status */
   bool b_status_core_rdy;
   bool b_status_nvm_rdy;
   bool b_status_nvm_err;
@@ -263,8 +309,12 @@ typedef struct {
   bool b_st_crack_pass; 
 } sStatus_t;
 
+/**
+ * @brief Struct to easily read bits in INT_STATUS register
+ * INT_STATUS : read only register
+ * 
+ */
 typedef struct {
-  /* Interrupts status */
   bool b_drdy_data_reg;
   bool b_fifo_full;
   bool b_fifo_ths;
@@ -272,6 +322,11 @@ typedef struct {
   bool b_por;
 } sIntStatus_t;
 
+/**
+ * @brief Struct to easily read bits in PRESS_DATA register
+ * PRESS_DATA : read only register
+ * 
+ */
 typedef struct {
   /* Pressure data */
   uint8_t u8_press_7_0;
@@ -279,15 +334,23 @@ typedef struct {
   uint8_t u8_press_23_16;
 } sPressData_t;
 
+/**
+ * @brief Struct to easily read TEMP_DATA register
+ * TEMP_DATA : read only register
+ * 
+ */
 typedef struct {
-  /* Temperature data */
   uint8_t u8_temp_7_0;
   uint8_t u8_temp_15_8;
   uint8_t u8_temp_23_16;
 } sTempData_t;
 
+/**
+ * @brief Struct to easily read CHIP_STATUS register
+ * CHIP_STATUS : read only register
+ * 
+ */
 typedef struct {
-  /* ASIC status register */
   eBMP581HIFMode_t e_hif_mode;
   bool b_i3c_err_0;
   bool b_i3c_err_3;
