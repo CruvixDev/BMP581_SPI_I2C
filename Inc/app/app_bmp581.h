@@ -23,16 +23,27 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 
 /* Exported types ------------------------------------------------------------*/
+
+/**
+ * @brief Enumeration defining power modes of BMP581
+ * 
+ * To switch between power modes, write the enum value in the ODR_CONFIG
+ * register in the pwr_mode bit.
+ */
 typedef enum {
-  /* Define BMP581 power modes */
   ceAPP_BMP581_STANDBY = 0,
   ceAPP_BMP581_NORMAL,
   ceAPP_BMP581_FORCED,
   ceAPP_BMP581_CONTINUOUS,
 } eBMP581PwrMode_t;
 
+/**
+ * @brief Enumeration defining the different ODR values in Hz.
+ * 
+ * To set the expected ODR, write the enum value in the ODR_CONFIG
+ * register in the odr bits.
+ */
 typedef enum {
-  /* Define possible ODRs in Hz */
   ceAPP_BMP581_240_000Hz = 0,
   ceAPP_BMP581_218_537Hz,
   ceAPP_BMP581_199_111Hz,
@@ -67,8 +78,14 @@ typedef enum {
   ceAPP_BMP581_000_125Hz,
 } eBMP581ODR_t;
 
+/**
+ * @brief Enumeration defining the different OSR values for
+ * pressure and temperature
+ * 
+ * To set the expected OSR value, write the enum value in OSR_CONFIG
+ * register in osr_p for pressure and osr_t for temperature.
+ */
 typedef enum {
-  /* Define possible OSR for pressure and temperature */
   ceAPP_BMP581_OSR_1 = 0,
   ceAPP_BMP581_OSR_2,
   ceAPP_BMP581_OSR_4,
@@ -79,24 +96,39 @@ typedef enum {
   ceAPP_BMP581_OSR_128,
 } eBMP581OSR_t;
 
+/**
+ * @brief Enumeration defining the counter limit for OOR
+ * 
+ * To set the expected counter limit value, write the enum value in
+ * OOR_CONFIG register in cnt_limit.
+ */
 typedef enum {
-  /* Define counter limit for OOR */
   ceAPP_BMP581_LIMIT_1 = 0,
   ceAPP_BMP581_LIMIT_3,
   ceAPP_BMP581_LIMIT_7,
   ceAPP_BMP581_LIMIT_15,
 } eBMP581OORCntLim_t;
 
+/**
+ * @brief Enumeration defining compensation for pressure or temperature
+ * 
+ * To enable compensation for pressure, temperature or both, write the enum
+ * value in the DSP_CONFIG register in comp_pt_en bit.
+ */
 typedef enum {
-  /* Define possible compensation for pressure and temperature */
   ceAPP_BMP581_NO_COMP = 0,
   ceAPP_BMP581_T_COMP,
   ceAPP_BMP581_P_COMP,
   ceAPP_BMP581_PT_COMP,
 } eBMP581PTComp_t;
 
+/**
+ * @brief Enumeration defining IIR filter coefficients
+ * 
+ * To set the coefficients of builtin IIR filter, write the enum value in
+ * DRP_IIR register in set_iir_p for pressure and in set_iir_t for temperature.
+ */
 typedef enum {
-  /* Define IIR's filter coefficient */
   ceAPP_BMP581_FILTER_BYPASS = 0,
   ceAPP_BMP581_FILTER_COEFF_1,
   ceAPP_BMP581_FILTER_COEFF_3,
@@ -107,16 +139,27 @@ typedef enum {
   ceAPP_BMP581_FILTER_COEFF_127,
 } eBMP581IRRFilter_t;
 
+/**
+ * @brief Enumeration defining the FIFO selection mode
+ * 
+ * The BMP581 FIFO can contain temperature, pressure or both. To select
+ * the expected mode, write the enum value in FIFO_SEL register in 
+ * fifo_frame_sel bit.
+ */
 typedef enum {
-  /* Define FIFO mode */
   ceAPP_BMP581_FIFO_DISABLE = 0,
   ceAPP_BMP581_FIFO_TEMP_ONLY,
   ceAPP_BMP581_FIFO_PRESS_ONLY,
   ceAPP_BMP581_FIFO_PRESS_AND_TEMP,
 } eBMP581FIFOSel_t;
 
+/**
+ * @brief Enumeration defining the different decimation for FIFO
+ * 
+ * To set the expected decimation factor for the FIFO, write the enum value
+ * in the FIFO_SEL register in the fifo_dec_sel bit (for pressure and temperature).
+ */
 typedef enum {
-  /* Define possible decimation for FIFO */
   ceAPP_BMP581_DEC_1 = 0,
   ceAPP_BMP581_DEC_2,
   ceAPP_BMP581_DEC_4,
@@ -127,8 +170,12 @@ typedef enum {
   ceAPP_BMP581_DEC_128,
 } eBMP581FIFODec_t;
 
+/**
+ * @brief Enumeration defining the protocol used by ASIC
+ * 
+ * Read this bit in the read only CHIP_STATUS register in hif_mode bit.
+ */
 typedef enum {
-  /* Define the protocol used by the ASIC*/
   ceAPP_BMP581_I2C_ONLY = 0,
   ceAPP_BMP581_SPI_MODE1_MODE2,
   ceAPP_BMP581_SPI_MODE0_MODE3,
@@ -159,7 +206,7 @@ typedef struct {
 } sOORConfig_t;
 
 typedef struct {
-  /* Configuration of the DSP */
+  /* Configuration of the DSP_IIR and DSP_CONFIG registers */
   eBMP581IRRFilter_t e_set_iir_t;
   eBMP581IRRFilter_t e_set_iir_p;
   eBMP581PTComp_t e_comp_pt_en;
