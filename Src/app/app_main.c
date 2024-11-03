@@ -59,8 +59,6 @@ int main(void)
   vI2C_init();
   vSPI_init();
 
-  u8APP_BMP581_getChipID();
-
   /* Main infinite loop */
   while (1) {
     vHAL_GPIO_toggleGreenLED();
