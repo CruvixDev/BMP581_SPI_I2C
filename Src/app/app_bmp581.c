@@ -120,4 +120,312 @@ void vAPP_BMP581_init(void) {
   }
 }
 
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_writeCommand(uint8_t p_u8Command) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureODR(sODRConfig_t p_sODRConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureOSR(sOSRConfig_t p_sOSRConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureOOR(sOORConfig_t p_sOORConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureDSP(sDSPConfig_t p_sDSPConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_writeNVM(uint8_t p_u8NVMAddress, uint8_t p_u8NVMData) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_readNVM(uint8_t p_u8NVMAddress, uint8_t p_u8NVMData) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureFIFO(sFIFOConfig_t p_sFIFOConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureInterrupt(sIntConfig_t p_sIntConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_configureDrive(sDriveConfig_t p_sDriveConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getCommand(uint8_t* p_u8Command) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getODRConfig(sODRConfig_t* p_sODRConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getOSRConfig(sOSRConfig_t* p_sOSRConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getOORConfig(sOORConfig_t* p_sOORConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getDSPConfig(sDSPConfig_t* p_sDSPConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getFIFOConfig(sFIFOConfig_t* p_sFIFOConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getInterruptConfig(sIntConfig_t* p_sIntConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getDriveConfig(sDriveConfig_t* p_sDriveConfig) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getEffectiveOSR(sOSREff_t* p_sOSREff) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getFIFOData(uint8_t* p_u8FIFOData) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getStatus(sStatus_t* p_sStatus) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getIntStatus(sIntStatus_t* p_sIntStatus) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getPressData(sPressData_t* p_sPressData) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getTempData(sTempData_t* p_sTempData) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getFIFOCount(uint8_t* p_u8FIFOCount) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getChipStatus(sChipStatus_t* p_sChipStatus) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getChipID(uint8_t* p_u8ChipID) {
+
+}
+
+/**
+ * @brief TODO
+ * 
+ * TODO
+ * 
+ * @return
+ */
+void errAPP_BMP581_getRevID(uint8_t* p_u8RevID) {
+
+}
+
 /* Private functions ---------------------------------------------------------*/
